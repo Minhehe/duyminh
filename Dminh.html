@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gởi Hmaiii</title>
+<style>
+    /* Thiết lập kiểu cho container chứa các ô */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: rgb(215, 146, 157); /* Màu nền hồng */
+    }
+
+    /* Thiết lập kiểu cho các hộp */
+    .box {
+        width: 200px;
+        height: 100px;
+        margin: 20px;
+        padding: 10px;
+        cursor: pointer;
+        background-color: white; /* Màu nền trắng */
+        color: black; /* Màu chữ đen */
+        border: 1px solid #ccc; /* Viền xám */
+        border-radius: 10px; /* Bo góc */
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+        transition: all 0.4s ease; /* Hiệu ứng chuyển động mượt mà */
+    }
+
+    /* Hiệu ứng hover */
+    .box:hover {
+        transform: scale(1.05); /* Phóng to khi di chuột qua */
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Đổ bóng lớn hơn */
+    }
+</style>
+</head>
+<body>
+
+<!-- Container chứa các ô -->
+<div class="container">
+    <!-- Các ô văn bản -->
+    <div id="box1" class="box" onclick="showText('box1')">Hey,would u like to go out with me:3</div>
+    <div id="box2" class="box" onclick="showText('box2')">Yessssss</div>
+    <div id="box3" class="box" onclick="moveOrNotify('box3')">Ko thích tẹo nào</div>
+</div>
+
+<!-- Script JavaScript -->
+<script>
+    var clickCount = 0;
+
+    // Hàm hiển thị văn bản khi click vào ô
+    function showText(id) {
+        var text = "";
+        if (id === "box1") {
+            text = "Ấn vào đây kh có gì đâu nghịch cái khác đi cô gái";
+        } else if (id === "box2") {
+            text = "Cbi đi a qua đón :))))";
+        }
+        alert(text); // Thay bằng hành động mong muốn (ví dụ: hiển thị trên trang)
+    }
+
+    // Hàm di chuyển ô hoặc hiển thị thông báo
+    function moveOrNotify(id) {
+        clickCount++;
+        if (clickCount >= 5) {
+            alert("Nài ấn nhiều thế tính từ chối anh thật đó à");
+        } else {
+            moveBox(id);
+        }
+    }
+
+    // Hàm di chuyển ô khi click vào
+    function moveBox(id) {
+        var box = document.getElementById(id);
+        var newX = Math.floor(Math.random() * (window.innerWidth - box.offsetWidth));
+        var newY = Math.floor(Math.random() * (window.innerHeight - box.offsetHeight));
+        box.style.position = "absolute";
+        box.style.left = newX + "px";
+        box.style.top = newY + "px";
+    }
+</script>
+
+</body>
+</html>
